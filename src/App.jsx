@@ -1,21 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 function App() {
-  const [person, setPerson]=useState({
-    firstname: 'John',
-    lastname:'Doe',
-    age: 18
-  })
-  const incrementer=()=>{
-    person.age++
-   setPerson({...person, age: person.age ++})
- }
+
+   const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(new FormData(e.target.value))
+   }
   return (
-    <>
-    <p>Age de {person.firstname}: {person.age}</p>
-    <button onClick={incrementer}>Gagner une année</button>
-    </> 
-  )
+    <form onSubmit={handleSubmit}>
+      <input type='text' name='firstname'/>
+      <button>Envoyer</button>
+    </form>
+  );
 }
 
-export default App
+export default App;
